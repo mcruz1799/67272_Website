@@ -13,38 +13,52 @@ class Ability
       can :manage, :all
     
     elsif user.role? :manager
-      #Managers can edit employees, list all employees and view their details
-      can :read, Employee
+      # can edit employees, list all employees and view their details (for employees at their stores)
+      can :index, Employee
+      can [:show,:edit,:update], Employee do |this_employee|
+        this_employee.current_assignment.store.name == user.current_assignment.store.name
+      end
+      #can index stores and show the store their currently assigned to
+      can :index, Store
+      can :show, Store do |this_store|
+        user.current_assignment.store.name == this_store.name
+      end
+      # can index assignments and show assignments at their store
+      can :index, Assignment 
+      can :show, Assignment do |this_assignment| 
+        this_assignment.store.name == user.current_assignment.store.name
+      end
+      # can view, add, edit or delete shifts
+      can :manage, Shift 
+      # can add and remove jobs from shifts
+      can :manage, ShiftJob
+      # can view list of jobs
+      can :index, Job 
+
+
+      
 
     elsif user.role? :employee
-    
-    
+      # can view theirself
+      can :show, Employee do |employee|
+        employee.id == user.id
+      end
+      # can view their shifts
+      can :show, Shift do |this_shift| 
+        my_shifts = Shift.for_employee(user).map(&:id)
+        my_shifts.include? this_shift.id
+      end
+      #can index assignments and show their assignments
+      can :index, Assignment
+      can [:show,:edit,:update], Assignment do |this_assignment|
+        my_assignments = Assignment.for_employee(user).map(&:id)
+        my_assignments.include? this_assignment.id
+      end
+
     else #guests
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on.
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
+
+    end
+
   end
 end
