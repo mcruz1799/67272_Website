@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   resources :employees
   resources :stores
   resources :assignments
+  resources :sessions, only: [:new, :create, :destroy]
 
   # Custom routes
+  get 'login', to: 'sessions#new', as: :login
+  get 'logout', to: 'sessions#destroy', as: :logout
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
 
   # You can have the root of your site routed with 'root'
