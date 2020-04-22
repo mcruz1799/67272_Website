@@ -35,12 +35,9 @@ class Ability
       # can view list of jobs
       can :index, Job 
 
-
-      
-
     elsif user.role? :employee
       # can view theirself
-      can :show, Employee do |employee|
+      can [:show, :edit, :update], Employee do |employee|
         employee.id == user.id
       end
       # can view their shifts
@@ -50,7 +47,7 @@ class Ability
       end
       #can index assignments and show their assignments
       can :index, Assignment
-      can [:show,:edit,:update], Assignment do |this_assignment|
+      can :show, Assignment do |this_assignment|
         my_assignments = Assignment.for_employee(user).map(&:id)
         my_assignments.include? this_assignment.id
       end
