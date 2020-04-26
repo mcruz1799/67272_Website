@@ -266,6 +266,8 @@ GEM
     shoulda-context (1.2.2)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    simple_calendar (2.3.0)
+      rails (>= 3.0)
     simple_form (5.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -359,6 +361,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   shoulda (= 3.5.0)
   shoulda-matchers (= 2.8.0)
+  simple_calendar (~> 2.0)
   simple_form
   simplecov
   sqlite3

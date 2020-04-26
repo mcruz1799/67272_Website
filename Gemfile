@@ -39,6 +39,7 @@ gem 'time_date_helpers', '0.0.4'
 gem 'cancancan'
 gem 'best_in_place', '~> 3.0.1'
 gem 'materialize-sass', '~> 1.0.0'
+gem "simple_calendar", "~> 2.0"
 gem 'simple_form'
 gem 'materialize-form', git: 'https://github.com/cmu-is-projects/materialize-form.git'
 gem 'will_paginate'
