@@ -19,5 +19,7 @@ module Creamery
     config.time_zone = 'Eastern Time (US & Canada)'
     config.active_record.default_timezone = :local
     config.active_record.time_zone_aware_attributes = false
+    config.beginning_of_week = :sunday
+
   end
 end
