@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col s12">
+    <%= month_calendar events: @shifts do |date, shifts| %>
+      <%= date %>
+
+      <% shifts.each do |shift| %>
+        <div>
+          <%= shift.employee.name %>
+          <%= "#{shift.start_time} - #{shift.end_time}" %>
+        </div>
+      <% end %>
+  </div>
+</div>
