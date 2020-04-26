@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to home_path, notice: "Already logged in!" if logged_in?
   end
   
   def create

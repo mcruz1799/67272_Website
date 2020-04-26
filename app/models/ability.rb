@@ -52,7 +52,7 @@ class Ability
         my_assignments.include? this_assignment.id
       end
 
-    else #guests
+    # else #guests
 
 
     end
