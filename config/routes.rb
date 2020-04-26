@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: :login
   get 'logout', to: 'sessions#destroy', as: :logout
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
+  get 'payroll_report', to: 'home#generate_payroll_report', as: :generate_payroll_report
 
   # You can have the root of your site routed with 'root'
   root 'home#index'
