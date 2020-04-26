@@ -1,13 +1,11 @@
-<h5>A&M Creamery Home</h5>
-
-<p>This is our very creative home page.</p>
-<p>Now go away.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>What are you still doing here?  Can't you follow instructions?</p>
-	
-<%# render :partial => 'general_home' %>
+<% if logged_in? %>  
+  <% if current_user.role? :admin %>
+    <%= render partial: 'admin_home' %>
+  <% elsif current_user.role? :manager %>
+    <%= render partial: 'manager_home' %> 
+  <% elsif current_user.role? :regular %>
+    <%= render partial: 'regular_home' %>
+  <% end %>
+<% else %>
+  <%= render partial: 'general_home' %>
+<% end %>
