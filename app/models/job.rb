@@ -10,6 +10,8 @@ class Job < ApplicationRecord
 
   # Scopes
   scope :alphabetical, -> { order('name') }
+  scope :search, ->(term) { where('name LIKE ?', "#{term}%") }
+
 
   # Validations
   validates_presence_of :name

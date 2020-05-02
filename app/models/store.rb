@@ -10,7 +10,9 @@ class Store < ApplicationRecord
   has_many :shifts, through: :assignments
 
   # Scopes
-  scope :alphabetical, -> { order('name') }
+  scope :alphabetical,  -> { order('name') }
+  scope :search,        ->(term) { where('name LIKE ?', "#{term}%") }
+
 
   # Validations
   # make sure required fields are present
