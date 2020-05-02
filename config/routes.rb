@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :employees
   resources :stores
   resources :assignments
+  resources :shifts
   resources :sessions, only: [:new, :create, :destroy]
 
   # Custom routes
