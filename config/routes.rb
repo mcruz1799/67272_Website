@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
   get 'payroll_report', to: 'home#generate_payroll_report', as: :generate_payroll_report
 
+  # Searching routes
+  get 'employees/search', to: 'employees#search', as: :employee_search
+
   # You can have the root of your site routed with 'root'
   root 'home#index'
 end
