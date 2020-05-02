@@ -11,6 +11,7 @@ class EmployeesController < ApplicationController
 
   def show
     retrieve_employee_assignments
+    get_employee_shifts
   end
 
   def new
@@ -60,6 +61,10 @@ class EmployeesController < ApplicationController
   def retrieve_employee_assignments
     @current_assignment = @employee.current_assignment
     @previous_assignments = @employee.assignments.to_a - [@current_assignment]
+  end
+
+  def get_employee_shifts
+    @shifts = Shift.for_employee(@employee).chronological
   end
 
 end
