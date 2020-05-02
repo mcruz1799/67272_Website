@@ -12,6 +12,7 @@ class ShiftsController < ApplicationController
 
   def new 
     @shift = Shift.new
+    @assignments = Assignment.current.map{|a| a.employee}
   end 
 
   def create
@@ -41,6 +42,6 @@ class ShiftsController < ApplicationController
   end
 
   def shift_params
-    params.require(:shift).permit(:date,:start_time,:end_time,:notes,:status)
+    params.require(:shift).permit(:assignment_id, :date,:start_time,:end_time,:notes,:status)
   end
 end

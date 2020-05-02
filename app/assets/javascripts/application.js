@@ -33,6 +33,10 @@ $(document).ready(function() {
   jQuery(".best_in_place").best_in_place();
 });
 
+// time picker 
+$(document).ready(function() {
+  $('.timepicker').timepicker();
+});
 // Search submit on enter
 $(document).ready(function() {
   function submitForm() {
