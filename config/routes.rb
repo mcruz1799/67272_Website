@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'home/privacy', to: 'home#privacy', as: :privacy
   get 'home/search', to: 'home#search', as: :search
 
+  # Searching routes
+  get 'employees/search', to: 'employees#search', as: :employee_search
+
   # Resource routes (maps HTTP verbs to controller actions automatically):
   resources :employees
   resources :stores

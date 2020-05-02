@@ -10,6 +10,8 @@ class PayGrade < ApplicationRecord
 
   # Scopes
   scope :alphabetical, -> { order('level') }
+  scope :search, ->(term) { where('level LIKE ?', "#{term}%") }
+
 
   # Validations
   validates_presence_of :level

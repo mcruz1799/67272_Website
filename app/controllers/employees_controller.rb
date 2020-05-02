@@ -3,11 +3,10 @@ class EmployeesController < ApplicationController
   authorize_resource
 
   def index
-    # for phase 3 only
     @active_managers = Employee.managers.active.alphabetical.paginate(page: params[:page]).per_page(10)
     @active_employees = Employee.regulars.active.alphabetical.paginate(page: params[:page]).per_page(10)
     @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
-
+    @total_employees = @active_managers.size + @active_employees.size + @inactive_employees.size
   end
 
   def show
@@ -36,6 +35,14 @@ class EmployeesController < ApplicationController
     else
       render action: 'edit'
     end
+  end
+
+  def search
+    redirect_back(fallback_location: home_path) if params[:query].blank?
+    @query = params[:query]
+    @employees = Employee.search(@query)
+    @total_hits = @employees.size
+    redirect_to employee_path(@employees.first) if @total_hits == 1
   end
 
 
