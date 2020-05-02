@@ -4,7 +4,12 @@
 <% unless list.empty? %>
   <ul>
     <% for object in list do %>
-      <li><%= link_to object.name, eval{#{object}} %></li>
+      <li>
+          <%= link_to(eval("#{model_name}_path(object)")) do  %>
+            <%= object.name %>
+          <% end %>
+      </li>
+      
     <% end %>
   </ul>
   <p class="smtext">&nbsp;</p>

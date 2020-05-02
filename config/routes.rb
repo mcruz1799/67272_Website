@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'home/privacy', to: 'home#privacy', as: :privacy
   get 'home/search', to: 'home#search', as: :search
 
+  # Searching routes
+  get 'employees/search', to: 'employees#search', as: :employee_search
+
   # Resource routes (maps HTTP verbs to controller actions automatically):
   resources :employees
   resources :stores
@@ -18,9 +21,6 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: :logout
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
   get 'payroll_report', to: 'home#generate_payroll_report', as: :generate_payroll_report
-
-  # Searching routes
-  get 'employees/search', to: 'employees#search', as: :employee_search
 
   # You can have the root of your site routed with 'root'
   root 'home#index'

@@ -1,14 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  # handle 404 errors with an exception as well
-  rescue_from ActiveRecord::RecordNotFound do |exception|
+  # # handle 404 errors with an exception as well
+  # rescue_from ActiveRecord::RecordNotFound do |exception|
 
-    # consider creating your own 404 page within home and redirecting there...
+  #   # consider creating your own 404 page within home and redirecting there...
     
-    flash[:error] = "The page entered does not exist. Returning to the home page"
-    redirect_to home_path
-  end
+  #   flash[:error] = "The page entered does not exist. Returning to the home page"
+  #   redirect_to home_path
+  # end
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "You are not authorized to take this action. If this is an error contact your system administrator."
