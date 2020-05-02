@@ -15,8 +15,8 @@ class SchedulesController < ApplicationController
   private 
 
   def get_admin_schedule
-    store = Store.find(params[:id])
-    @shifts = Shift.for_store(store)
+    store = Store.find(params[:id]) if params[:id].present?
+    store.nil? ? @shifts = Shift.all : @shifts = Shift.for_store(store) 
   end
 
   def get_manager_schedule 
