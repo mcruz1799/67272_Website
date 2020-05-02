@@ -1,0 +1,7 @@
+<%= f.input :employee_id, collection: Employee.alphabetical.active.to_a, include_blank: true %>
+<%= f.input :store_id, collection: Store.alphabetical.active.to_a, include_blank: true %>
+<%= f.input :date, label_html: {class: 'active' } %>
+<%= f.input :start_time %>
+<%= f.input :end_time %>
+<%= f.input :notes %>
+<%= f.input :status %> 
