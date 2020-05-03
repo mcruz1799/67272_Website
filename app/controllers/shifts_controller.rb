@@ -4,7 +4,8 @@ class ShiftsController < ApplicationController
   authorize_resource
 
   def index 
-    @shifts = Shift.by_store
+    @upcoming_shifts = Shift.upcoming.chronological.paginate(page: params[:page]).per_page(10)
+    @completed_shifts = Shift.past.chronological.paginate(page: params[:page]).per_page(10)
   end
 
   def show 

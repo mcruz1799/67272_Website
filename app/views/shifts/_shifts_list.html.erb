@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-content">
+    <h5><%= state.capitalize %> Shifts</h5>
+
+    <% if shifts.empty? %>
+      <p>There are no <%= state.downcase %> shifts at this time.</p>
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <th>Employee Name</th>
+          <th>Store Name</th>
+          <th>Date</th>
+          <th>Times</th>
+          <% if can? :manage, Shift %>
+            <th>Options</th>
+          <%end %>
+        </thead>
+        <% shifts.each do |shift| %>
+          <tr %>
+            <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
+            <td><%= link_to shift.store.name, store_path(shift.store) %></td>
+            <td><%= shift.date.strftime("%-m/%-d/%y") %></td>
+            <td><%= #{shift.start_time.strftime("%R")} - #{shift.end_time.strftime("%R")} %></td>
+            <% if can? :manage, Shift %>
+              <td>
+                <% if state.downcase == 'upcoming' %>
+                  <%= link_to(edit_shift_path(shift)) do %>
+                    <i class="material-icons">edit</i>
+                  <% end %>
+                <% end %>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this shift?' }) do %>
+                    <i class="material-icons">delete</i>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      <br />
+    <% end %>
+  </div>
+</div>
