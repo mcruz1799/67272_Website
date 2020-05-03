@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-content"> 
+    <% if @shifts.nil? || @shifts.empty? %> 
+          <h5>Not recorded for any shift in the system</h5>
+        <% else %>
+          <h5><%= "Recent Shifts including #{@job.name}" %></h5>
+          <table>
+            <thead>
+              <th>Date</th>
+              <th>Employee</th>
+              <th>Store</th>
+            </thead>
+
+            <tbody>
+              <% @shifts.each do |shift| %>
+
+                <tr>
+                  <td><%= link_to shift.date.strftime("%D"), shift_path(shift) %></td>
+                  <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
+                  <td><%= link_to shift.store.name, store_path(shift.store) %></td>
+                </tr>
+
+              <% end %>
+
+            </tbody>
+          </table>
+
+          <% # will_paginate shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+
+        <% end %>
+  </div>
+</div>

@@ -14,9 +14,9 @@
         <tbody>
           <% @jobs.each do |job| %>
             <tr>
-              <td><%= job.name %></td>
+              <td><%= link_to job.name, job_path(job) %></td>
               <td><%= job.description unless job.description.nil? %></td>
-              <td><%= @job.active ? "Yes" : "No" %></td>
+              <td><%= job.active ? "Yes" : "No" %></td>
             </tr>
           <% end %>
         </tbody>

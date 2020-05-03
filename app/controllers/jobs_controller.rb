@@ -3,6 +3,12 @@ class JobsController < ApplicationController
   authorize_resource
 
   def show
+    unless @job.shift_jobs.empty? 
+      #TO DO: GET PAGINATION WORKING
+      # @shifts = @job.shift_jobs.map{|sj| sj.shift}.select{|shift| shift.date >= 1.week.ago.to_date}.sort_by{|s| s.date}.paginate(page: params[:page]).per_page(10)
+      @shifts = @job.shift_jobs.map{|sj| sj.shift}.select{|shift| shift.date >= 1.week.ago.to_date}.sort_by{|s| s.date}
+
+    end
   end
 
   def index
@@ -34,6 +40,9 @@ class JobsController < ApplicationController
   end
 
   def destroy
+    @job.destroy
+    flash[:notice] = "Successfully removed job from the system."
+    redirect_to jobs_path
   end
 
   private
