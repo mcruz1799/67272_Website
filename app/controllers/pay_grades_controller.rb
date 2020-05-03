@@ -23,6 +23,7 @@ class PayGradesController < ApplicationController
       redirect_to pay_grades_path, notice: "Updated #{@pay_grade.level}'s details."
     else
       render action: 'edit'
+    end
   end
 
   def index
