@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :stores
   resources :assignments
   resources :shifts
+  resources :pay_grades #TO DO: TAKE OUT UNNECESSARY ROUTES
   resources :sessions, only: [:new, :create, :destroy]
 
   # Custom routes
