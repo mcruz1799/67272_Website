@@ -5,7 +5,7 @@ class ShiftsController < ApplicationController
 
   def index 
     @upcoming_shifts = Shift.upcoming.chronological.paginate(page: params[:page]).per_page(10)
-    @completed_shifts = Shift.past.chronological.paginate(page: params[:page]).per_page(10)
+    @past_shifts = Shift.past.chronological.paginate(page: params[:page]).per_page(10)
   end
 
   def show 
