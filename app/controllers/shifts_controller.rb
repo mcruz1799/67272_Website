@@ -8,6 +8,8 @@ class ShiftsController < ApplicationController
   end
 
   def show 
+    @employee = @shift.assignment.employee
+    @store = @shift.assignment.store
   end
 
   def new 

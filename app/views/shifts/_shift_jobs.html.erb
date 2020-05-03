@@ -1,0 +1,26 @@
+<% unless @shift.report_completed? %>
+  <h5>No Jobs have been recorded for this Shift</h5>
+<% else %>
+  <div class="card">
+    <div class="card-content">
+      <h5>Recorded Jobs</h5>
+        <table>
+          <thead>
+            <th>Job</th>
+            <th>Description</th>
+          </thead>
+
+          <tbody>
+            <% @shift.jobs.alphabetical.each do |job| %>
+              <tr>
+                <!-- TO DO: MAKE LINK TO JOB SHOW PAGE -->
+                <td><%= job.name %></td>
+                <td><%= job.description %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+    </div>
+  </div>
+<% end %>

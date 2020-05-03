@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-content">
+    <h4>Shift Information</h4>
+    <b>Employee: </b><%= link_to @employee.name, @employee %><br><br>
+    <b>Store: </b><%= link_to @store.name, @store %><br><br>
+    <b>Date: </b><%= @shift.date.strftime("%D") %><br><br>
+    <b>Times: </b><%= "#{@shift.start_time.strftime("%R")} to #{@shift.end_time.strftime("%R")}" %><br><br>
+    <% unless @shift.notes.nil? %>
+      <b>Notes: </b><%= @shift.notes %>
+    <% end %>
+  </div>
+</div>
