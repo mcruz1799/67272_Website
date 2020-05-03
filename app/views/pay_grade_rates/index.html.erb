@@ -1,27 +1,30 @@
 <div class="card">
   <div class="card-content">
-    <h5>Pay Grades</h5>
+    <h5>Pay Grade Rates</h5>
 
     <% if @pay_grades.empty? %>
-      <p>There are no pay grades at this time.</p>
+      <p>There are no pay grade rates at this time.</p>
     <% else %>
-
       <table class="striped highlight">
         <thead>
-          <th>Level</th>
-          <th>Current Pay Rate</th>
-          <th>Active</th>
+          <th>Pay Grade</th>
+          <th>Rate</th>
+          <th>Start Date</th>
+          <th>End Date</th>
         </thead>
         <% @pay_grades.each do |pay_grade| %>
-          <tr %>
-            <td><%= pay_grade.level %></td>
-            <% if pay_grade.pay_grade_rates.empty? %>
-              <td>n/a</td>
-            <% else %>
-              <td><%= pay_grade.pay_grade_rates.current.first.rate %></td>
-            <% end %>
-            <td><%= pay_grade.active ? "Yes" : "No" %></td>
-          </tr>
+          <% pay_grade.pay_grade_rates.chronological.each do |pgr| %>
+            <tr %>
+              <td><%= pay_grade.level %></td>
+              <td><%= pgr.rate %></td>
+              <td><%= pgr.start_date.strftime("%D") %></td>
+              <% if pgr.end_date.nil? %>
+                <td>n/a</td>
+              <% else %>
+                <td><%= pgr.end_date.strftime("%D") %></td>
+              <% end %> 
+            </tr>
+          <% end %>
         <% end %>
       </table>
       <p class="supertiny"></p>
