@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-content">
-    <h5><%= Pay Grades</h5>
+    <h5>Pay Grades</h5>
 
     <% if @pay_grades.empty? %>
       <p>There are no pay grades at this time.</p>
@@ -14,7 +14,11 @@
         <% @pay_grades.each do |pay_grade| %>
           <tr %>
             <td><%= pay_grade.level %></td>
-            <td><%= pay_grade.pay_grade_rates.current.first.rate %></td>
+            <% if pay_grade.pay_grade_rates.empty? %>
+              <td>n/a</td>
+            <% else %>
+              <td><%= pay_grade.pay_grade_rates.current.first.rate %></td>
+            <% end %>
           </tr>
         <% end %>
       </table>
