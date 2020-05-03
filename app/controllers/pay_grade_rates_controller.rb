@@ -7,6 +7,7 @@ class PayGradeRatesController < ApplicationController
 
   def new 
     @pay_grade_rate = PayGradeRate.new
+    @pay_grades = PayGrade.alphabetical.map{|pg| [pg.level, pg.id]}
   end
 
   def create
