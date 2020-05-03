@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :shifts
   resources :pay_grades #TO DO: TAKE OUT UNNECESSARY ROUTES
   resources :pay_grade_rates #TO DO: SAME AS ABOVE
+  resources :jobs #TO DO: SAME AS ABOVE
   resources :sessions, only: [:new, :create, :destroy]
 
   # Custom routes
