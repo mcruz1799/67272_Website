@@ -12,6 +12,7 @@ class EmployeesController < ApplicationController
   def show
     retrieve_employee_assignments
     get_employee_shifts
+    params[:start_date] = 1.week.ago.to_date
   end
 
   def new

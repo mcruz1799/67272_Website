@@ -3,4 +3,4 @@
 <%= f.input :start_time, input_html: { class: 'timepicker'}%>
 <%= f.input :end_time, input_html: { class: 'timepicker'} %>
 <%= f.input :notes %>
-<%= f.input :status %> 
+<%= f.input :status, collection: %w[pending started finished] %> 
