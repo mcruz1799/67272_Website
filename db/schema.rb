@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_020137) do
+ActiveRecord::Schema.define(version: 2020_05_03_045342) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "store_id", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_11_24_020137) do
 
   create_table "pay_grades", force: :cascade do |t|
     t.string "level"
-    t.boolean "active"
+    t.boolean "active", default: true
   end
 
   create_table "shift_jobs", force: :cascade do |t|
