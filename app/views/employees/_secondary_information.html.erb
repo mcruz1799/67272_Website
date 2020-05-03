@@ -6,29 +6,9 @@
     <%= link_to "#{shift.start_time.strftime("%R")} - #{shift.end_time.strftime("%R")}", shift_path(shift) %>
   <% end %>
 <% end %>
-<div class="card">
-  <div class="card-content">
-    <table>
-      <thead>
-        <th>Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-      </thead>
-      <tbody>
-        <% @shifts.each do |shift| %>
-          <tr>
-            <td><%= shift.date.strftime("%D")%></td>
-            <td><%= shift.start_time.strftime("%R")%></td>
-            <td><%= shift.end_time.strftime("%R")%></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
 <div class="card grey lighten-3">
   <div class="card-action">
     <!-- TO DO: NEW SHIFT FORM  -->
-    <% link_to "New Shift", new_shift_path(employee_id: @employee.id) %>
+    <%= link_to "New Shift", new_shift_path(assignment_id: @employee.current_assignment.id) %>
   </div>
 </div>
