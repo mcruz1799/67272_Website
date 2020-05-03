@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-content">
+    <h4><%= "Job Information for #{@job.name} %></h4>
+    <% unless @job.description.nil? %>
+      <b>Description: </b><%= @job.description %>
+    <% end %> 
+    <% if @job.shift_jobs.empty? %> 
+      <h5>Not recorded for any shift in the system</h5>
+    <% else %>
+      <h5>Shifts where job has been recorded</h5>
+      <table>
+        <thead>
+          <th>Date</th>
+          <th>Employee</th>
+          <th>Store</th>
+        </thead>
+
+        <tbody>
+          <!-- TO DO: MOVE LOGIC TO HELPER OR CONTROLLER  -->
+          <%= @job.shift_jobs.map{|sj| sj.shift}.chronogical.each do |shift| %>
+
+            <tr>
+              <td><%= link_to shift_path(shift), shift.date %></td>
+              <td><%= link_to employee_path(shift.employee), shift.employee.name %></td>
+              <td><%= link_to store_path(shift.store), shift.store.name %></td>
+            </tr>
+
+          <% end %>
+
+        </tbody>
+      </table>
+
+    <% end %>
+  </div>
+</div>
