@@ -1,7 +1,13 @@
 class HomeController < ApplicationController
   def index
     @stores = Store.all.alphabetical
-    @shift = todays_shift if current_user.role? :employee
+    if current_user.role? :employee
+      @shift = todays_shift
+
+      start_date = 8.days.ago.to_date
+      date_range = DateRange.new(start_date)
+      @calc = PayrollCalculator.new(date_range)
+      @payroll = @calc.create_payroll_record_for(current_user)
     # @store_array = store.map{|store| [store.name, store.id] }
   end
 

@@ -4,7 +4,7 @@
   <% elsif current_user.role? :manager %>
     <%= render partial: 'manager_home' %> 
   <% elsif current_user.role? :employee %>
-    <%= render partial: 'partials/home_structure', locals: {primary: 'punch_clock', secondary: nil, sidebar: nil} %>
+    <%= render partial: 'partials/home_structure', locals: {primary: 'punch_clock', secondary: nil, sidebar: 'latest_pay_report'} %>
   <% end %>
 <% else %>
   <%= render partial: 'general_home' %>

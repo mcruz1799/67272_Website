@@ -1,0 +1,15 @@
+<h5>Latest Pay Report</h5>
+<table>
+  <thead>
+    <th>Dates</th>
+    <th>Hours</th>
+    <th>Pay Earned</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= "#{@calc.start_date} - {@calc.end_date}"%></td>
+      <td><%= @payroll.hours %></td>
+      <td><%= "$#{@payroll.pay_earned}" %></td>
+    </tr>
+  </tbody>
+</table>
