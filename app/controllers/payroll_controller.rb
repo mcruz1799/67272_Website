@@ -13,8 +13,11 @@ class PayrollController < ApplicationController
     
   end
 
-  # private 
+  private 
 
+  def payroll_params
+    params.require(:payroll).permit(:date_range)
+  end
   # def date_range_params 
   #   params.require(:date_range).permit(:start_date, :end_date)
   # end
