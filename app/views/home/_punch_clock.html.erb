@@ -2,8 +2,11 @@
 <div class="card">
   <div class="card-content">
     <% punch_in? ? text = "CLOCK IN" : text = "CLOCK OUT" %>
-      <%= link_to text, punch_clock_path %>
+      <%= link_to text, punch_clock_path, method: :patch %><br>
+      <%= text ==  "CLOCK IN" ? "Scheduled: #{@shift.start_time.strftime("%R")}" : "Scheduled: #{@shift.end_time.strftime("%R")}" %>
   </div>
 </div>
 
+<% else %>
+  <h5>No Shifts Today</h5>
 <% end %>

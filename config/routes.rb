@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: :login
   get 'logout', to: 'sessions#destroy', as: :logout
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
-  patch 'home/punch_clock', to: 'home#punch_clock'
+  patch 'home/punch_clock', to: 'home#punch_clock', as: :punch_clock
   get 'home/payroll_report', to: 'home#generate_payroll_report', as: :generate_payroll_report
   get 'schedule', to: 'schedules#schedule', as: :schedule
 
