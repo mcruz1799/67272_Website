@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
   get 'payroll_report', to: 'home#generate_payroll_report', as: :generate_payroll_report
   get 'schedule', to: 'schedules#schedule', as: :schedule
+  post 'new_shift_job', to: 'shifts#create_shift_job', as: :new_shift_job
 
   # You can have the root of your site routed with 'root'
   root 'home#index'
