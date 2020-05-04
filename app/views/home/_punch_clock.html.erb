@@ -1,5 +1,9 @@
+<% if punch_in? || punch_out? %>
 <div class="card">
   <div class="card-content">
-    
+    <% punch_in? ? text = "CLOCK IN" : text = "CLOCK OUT" %>
+      <%= link_to text, punch_clock_path %>
   </div>
 </div>
+
+<% end %>
