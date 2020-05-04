@@ -1,19 +1,21 @@
 class PayrollController < ApplicationController
 
-  def generate_store_report
-    date_range = DateRange.new(date_range_params)
-    store = params[:id]
-    calc = PayRollCalculator.new(date_range)
-    report = PayRollCalculator.create_payrolls_for(store)
+  def store_report
+    start_date  = params[:start_date]
+    end_date    = params[:end_date]
+    # store       = Store.find(params[:store_id])
+    # date_range = DateRange.new(start_date, end_date)
+    # calc = PayRollCalculator.new(date_range)
+    # @report = PayRollCalculator.create_payrolls_for(store)
   end
 
-  def generate_employee_report(date_range)
+  def employee_report
     
   end
 
-  private 
+  # private 
 
-  def date_range_params 
-    params.require(:date_range).permit(:start_date, :end_date)
-  end
+  # def date_range_params 
+  #   params.require(:date_range).permit(:start_date, :end_date)
+  # end
 end
