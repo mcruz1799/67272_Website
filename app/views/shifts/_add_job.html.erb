@@ -1,0 +1,10 @@
+<div class="card grey lighten-3">
+  <div class="card-action">
+    <h5>Add Job</h5>
+    <%= form_with url: new_shift_job_path, method: "post", id: "new_shift_job" do %>
+      <%= label_tag(:job) %>
+      <%= collection_select(:job, :job_id, Job.active.alphabetical, :id, :name) %>
+      <%= submit_tag("Add") %>
+    <% end %>
+  </div>
+</div>

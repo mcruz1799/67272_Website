@@ -1,0 +1,8 @@
+<h5>Generate Payroll Report</h5>
+
+<%= simple_form_for(:date_range, url: store_report_path, method: :get) do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.input :store_id, collection: @stores %>
+  <%= f.button :submit, "Generate" %>
+<% end %>

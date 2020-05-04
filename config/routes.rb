@@ -25,8 +25,10 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: :logout
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
   patch 'home/punch_clock', to: 'home#punch_clock', as: :punch_clock
-  get 'home/payroll_report', to: 'home#generate_payroll_report', as: :generate_payroll_report
+  get 'payroll/store_report', to: 'payroll#store_report', as: :store_report
+  get 'payroll/employee_report', to: 'payroll#employee_report', as: :employee_report
   get 'schedule', to: 'schedules#schedule', as: :schedule
+  post 'new_shift_job', to: 'shifts#create_shift_job', as: :new_shift_job
 
   # You can have the root of your site routed with 'root'
   root 'home#index'
