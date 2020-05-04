@@ -2,12 +2,9 @@ class HomeController < ApplicationController
   def index
     @stores = Store.all.alphabetical
     if logged_in? && (current_user.role? :employee)
-      @shift = todays_shift
+      setup_latest_pay_report
+      setup_latest_shifts
 
-      start_date = 8.days.ago.to_date
-      date_range = DateRange.new(start_date)
-      @calc = PayrollCalculator.new(date_range)
-      @payroll = @calc.create_payroll_record_for(current_user)
     end
     # @store_array = store.map{|store| [store.name, store.id] }
   end
@@ -37,6 +34,20 @@ class HomeController < ApplicationController
 
   def date_range_params 
     params.require(:date_range).permit(:start_date, :end_date)
+  end
+
+  def setup_latest_shifts
+    params[:start_date] = 1.week.ago.to_date #for simple calendar to show +/- 1 week
+    @employee = current_user
+    @shifts = Shift.for_employee(@employee).chronological
+  end
+
+  def setup_latest_pay_report
+    @shift = todays_shift
+    start_date = 8.days.ago.to_date
+    date_range = DateRange.new(start_date)
+    @calc = PayrollCalculator.new(date_range)
+    @payroll = @calc.create_payroll_record_for(current_user)
   end
 
   def todays_shift

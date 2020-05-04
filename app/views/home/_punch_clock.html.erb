@@ -6,7 +6,4 @@
       <%= text ==  "CLOCK IN" ? "Scheduled: #{@shift.start_time.strftime("%R")}" : "Scheduled: #{@shift.end_time.strftime("%R")}" %>
   </div>
 </div>
-
-<% else %>
-  <h5>No Shifts Today</h5>
 <% end %>

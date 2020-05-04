@@ -1,4 +1,4 @@
-<h5>Shifts</h5>
+<h5>Shift Schedule</h5>
 <%= week_calendar number_of_weeks: 2 do |date| %>
   <%= date.strftime("%-m/%-d") %><br>
   <% shifts = get_shifts_for_date(date) %>
@@ -6,8 +6,10 @@
     <%= link_to "#{shift.start_time.strftime("%R")} - #{shift.end_time.strftime("%R")}", shift_path(shift) %>
   <% end %>
 <% end %>
-<div class="card grey lighten-3">
-  <div class="card-action">
-    <%= link_to "New Shift", new_shift_path(assignment_id: @employee.current_assignment.id) %>
+<% if can? :create, Shift %>
+  <div class="card grey lighten-3">
+    <div class="card-action">
+      <%= link_to "New Shift", new_shift_path(assignment_id: @employee.current_assignment.id) %>
+    </div>
   </div>
-</div>
+<% end %>
