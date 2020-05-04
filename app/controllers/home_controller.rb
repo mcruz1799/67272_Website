@@ -4,13 +4,6 @@ class HomeController < ApplicationController
     # @store_array = store.map{|store| [store.name, store.id] }
   end
 
-  def generate_payroll_report
-    date_range = DateRange.new(date_range_params)
-    store = params[:store]
-    calc = PayRollCalculator.new(date_range)
-    report = PayRollCalculator.create_payrolls_for(store)
-  end
-
   def about
   end
 

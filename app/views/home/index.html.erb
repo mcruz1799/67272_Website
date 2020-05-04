@@ -1,6 +1,6 @@
 <% if logged_in? %>  
   <% if current_user.role? :admin %>
-    <%= render partial: 'partials/home_structure', locals: {primary: 'recent_changes', secondary: 'quick_add', sidebar: 'partials/generate_payroll_report'} %>
+    <%= render partial: 'partials/home_structure', locals: {primary: 'recent_changes', secondary: 'quick_add', sidebar: 'partials/store_report'} %>
   <% elsif current_user.role? :manager %>
     <%= render partial: 'manager_home' %> 
   <% elsif current_user.role? :regular %>
