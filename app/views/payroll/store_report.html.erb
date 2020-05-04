@@ -1,1 +1,25 @@
-<h4>Store Report</h4>
+<h4><%= link_to @store.name, @store %> Payroll</h4>
+<h5><%= "#{@calc.start_date.strftime("%D")} - #{@calc.end_date.strftime("%D")}" %></h5>
+<div class="card">
+  <div class="card-content">
+    <table>
+      <thead>
+        <th>Employee</th>
+        <th>Pay Earned</th>
+        <th>Pay Grade</th>
+        <th>Pay Rate</th>
+      </thead>
+
+      <tbody>
+        <% @payrolls.each do |payroll| %>
+          <tr>
+            <td><%= link_to payroll.employee_name, employee_path(payroll.employee) %></td>
+            <td><%= "$#{payroll.pay_earned}" %></td>
+            <td><%= payroll.pay_grade %></td>
+            <td><%= "$#{payroll.pay_rate}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
