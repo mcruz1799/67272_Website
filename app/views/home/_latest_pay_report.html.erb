@@ -7,7 +7,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= "#{@calc.start_date} - {@calc.end_date}"%></td>
+      <td><%= "#{@calc.start_date.strftime("%D")} - #{@calc.end_date.strftime("%D")}"%></td>
       <td><%= @payroll.hours %></td>
       <td><%= "$#{@payroll.pay_earned}" %></td>
     </tr>
