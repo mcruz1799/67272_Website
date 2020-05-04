@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: :login
   get 'logout', to: 'sessions#destroy', as: :logout
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
-  get 'payroll/store_report', to: 'payroll#store_report', as: :store_report
+  post 'payroll/store_report', to: 'payroll#store_report', as: :store_report
   get 'payroll/employee_report', to: 'payroll#employee_report', as: :employee_report
   get 'schedule', to: 'schedules#schedule', as: :schedule
   post 'new_shift_job', to: 'shifts#create_shift_job', as: :new_shift_job

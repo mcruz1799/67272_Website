@@ -1,5 +1,5 @@
 <h5>Generate Payroll Report</h5>
-<%= form_with url: store_report_path, method: :get, id: "store_report" do %>
+<%= form_with url: store_report_path, method: :post, id: "store_report" do %>
   <%= label_tag(:start_date) %>
   <%= date_field(:date_range, :start_date) %>
   <%= label_tag(:end_date) %>
