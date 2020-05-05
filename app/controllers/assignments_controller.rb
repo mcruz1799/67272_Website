@@ -22,6 +22,7 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @assignment.employee_id = params[:employee_id] unless params[:employee_id].nil?
+    @assignment.store_id = params[:store_id] unless params[:store_id].nil?
     @assignment.start_date = Date.current
   end
 

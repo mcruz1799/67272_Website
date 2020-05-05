@@ -7,14 +7,29 @@
     <% else %>
 
       <table class="striped highlight">
-        <% @current_employees.each do |employee| %>
-          <tr %>
-            <td><%= link_to employee.name, employee_path(employee) %></td>
-          </tr>
-        <% end %>
+        <thead>
+          <th>Name</th>
+          <th>Add Shift</th>
+        </thead>
+        <tbody>
+          <% @current_employees.each do |employee| %>
+            <tr>
+              <td><%= link_to employee.name, employee_path(employee) %></td>
+              <td><%= link_to(new_shift_path(assignment_id: employee.current_assignment.id)) do %>
+                <i class="material-icons">add</i><%end%></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
       <p class="supertiny"></p>
       <br />
     <% end %>
+    <% if can? :create, Assignment %>
+    <div class="card grey lighten-3">
+      <div class="card-content">
+        <%= link_to "New Assignment", new_assignment_path(store_id: @store.id) %>
+      </div>
+    </div>
+  <% end %>
   </div>
 </div>
