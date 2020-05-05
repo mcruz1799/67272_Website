@@ -2,7 +2,7 @@
   <% if current_user.role? :admin %>
     <%= render partial: 'partials/home_structure', locals: {primary: 'recent_changes', secondary: 'quick_add', sidebar: 'partials/store_report_form'} %>
   <% elsif current_user.role? :manager %>
-    <%= render partial: 'partials/home_structure', locals: {primary: 'managers_employees', secondary: nil, sidebar: nil} %> 
+    <%= render partial: 'partials/home_structure', locals: {primary: 'managers_employees', secondary: nil, sidebar: 'stores_shifts'} %> 
   <% elsif current_user.role? :employee %>
     <%= render partial: 'partials/home_structure', locals: {primary: 'punch_clock', secondary: 'employees/secondary_information', sidebar: 'latest_pay_report'} %>
   <% end %>

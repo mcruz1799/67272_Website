@@ -1,0 +1,22 @@
+<h5>Upcoming Shifts</h5>
+<table>
+  <thead>
+    <th>View</th>
+    <th>Date</th>
+    <th>Employee</th>
+    <th>Times</th>
+  </thead>
+  <tbody>
+    <% @shifts.each do |shift| %>
+      <tr>
+        <td><%= link_to shift_path(shift) do %>
+            <i class="material-icons">pageview</i>
+            <% end %>
+        </td>
+        <td><%= shift.date.strftime("%D")%></td>
+        <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
+        <td><%= "#{shift.start_time.strftime("%R")} - #{shift.end_time.strftime("%R")}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,9 @@
 <div class="row">
+  <div class="col s12">
+    <%= render partial: "partials/title_with_search" unless current_user.role? :employee%>
+  </div>
+</div>
+<div class="row">
   <div class="col s8">
     <!-- primary partial gets displayed here in main div -->
     <%= render partial: "#{primary}" %>

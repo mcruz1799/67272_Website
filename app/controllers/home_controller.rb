@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       elsif current_user.role? :manager
         get_managers_store
         get_managers_employees
-
+        get_managers_shifts
       end
 
     end
@@ -41,6 +41,10 @@ class HomeController < ApplicationController
 
   def date_range_params 
     params.require(:date_range).permit(:start_date, :end_date)
+  end
+
+  def get_managers_shifts
+    @shifts = Shift.for_store(@store).for_next_days(7).chronological unless @store.nil? 
   end
 
   def get_managers_employees
