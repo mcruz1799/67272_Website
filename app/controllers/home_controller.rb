@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   def index
     @stores = Store.all.alphabetical
     if logged_in?
+      flash[:notice] = "Welcome #{current_user.first_name}!"
       if current_user.role? :employee
         setup_latest_pay_report
         setup_latest_shifts
