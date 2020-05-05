@@ -9,7 +9,7 @@
     <tr>
       <td><%= "#{@calc.start_date.strftime("%D")} - #{@calc.end_date.strftime("%D")}"%></td>
       <td><%= @payroll.hours %></td>
-      <td><%= "$#{@payroll.pay_earned}" %></td>
+      <td><%= "$#{sprintf('%.2f', @payroll.pay_earned.ceil(2))}" %></td>
     </tr>
   </tbody>
 </table>
