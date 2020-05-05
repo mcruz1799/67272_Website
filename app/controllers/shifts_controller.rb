@@ -12,6 +12,7 @@ class ShiftsController < ApplicationController
     @employee = @shift.assignment.employee
     @store = @shift.assignment.store
     @shift_job = ShiftJob.new
+    @job_array = Job.active.alphabetical.map{|job| [job.name, job.id]}
   end
 
   def new 
@@ -43,7 +44,8 @@ class ShiftsController < ApplicationController
 
   def create_shift_job
     @shift_job = ShiftJob.new(shift_job_params)
-    @shift_job.shift_id = @shift.id
+    @shift = Shift.find(params[:shift_id])
+    @shift_job.shift = @shift
     if @shift_job.save
       redirect_to @shift, notice: "Successfully added #{@shift_job.job.name} to the shift."
     else
@@ -62,6 +64,6 @@ class ShiftsController < ApplicationController
   end
 
   def shift_job_params
-    params.permit(:shift_id,:job_id)
+    params.require(:shift_job).permit(:shift_id,:job_id)
   end
 end
