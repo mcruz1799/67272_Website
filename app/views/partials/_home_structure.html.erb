@@ -21,6 +21,7 @@
   <div class="col s4">
     <!-- render the sidebar, if it exists -->
     <%= render partial: "partials/title_with_search" unless current_user.role? :employee %>
+    <br>
     <div class="card">
       <div class="card-content">
         <%= render partial: "#{sidebar}" unless sidebar.blank? %>

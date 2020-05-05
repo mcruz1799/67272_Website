@@ -55,7 +55,7 @@ class PayrollCalculator
 
   def increment_pay_earned(payroll, shift)
     payroll.hours += shift.duration
-    payroll.pay_earned += (shift.duration) * (payroll.pay_rate)
+    payroll.pay_earned += ((shift.duration) * (payroll.pay_rate)).ceil(2)
     return payroll
   end
 
