@@ -41,6 +41,18 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def destroy
+    if @employee.destroy
+      flash[:notice] = "Successfully removed the employee from the system"
+      redirect_to employees_path
+    else
+      get_employee_shifts
+      flash[:notice] = "Cannot delete employees who have worked a shift. 
+      Employee was made inactive, their current assignment was terminated and their pending shifts were removed."
+      render action: 'show'
+    end
+  end
+
   def search
     redirect_back(fallback_location: home_path) if params[:query].blank?
     @query = params[:query]
