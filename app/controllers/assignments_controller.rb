@@ -11,12 +11,13 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @assignment.employee_id = params[:employee_id] unless params[:employee_id].nil?
+    @assignment.start_date = Date.current
   end
 
   def create
     @assignment = Assignment.new(assignment_params)
     if @assignment.save
-      redirect_to assignments_path, notice: "Successfully added the assignment."
+      redirect_to employee_path(@assignment.employee), notice: "Successfully added the assignment."
     else
       render action: 'new'
     end
@@ -41,7 +42,7 @@ class AssignmentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def assignment_params
-    params.require(:assignment).permit(:store_id, :employee_id, :start_date)
+    params.require(:assignment).permit(:store_id, :employee_id, :pay_grade_id, :start_date)
   end
 
 end

@@ -47,8 +47,9 @@ class EmployeesController < ApplicationController
       redirect_to employees_path
     else
       get_employee_shifts
-      flash[:notice] = "Cannot delete employees who have worked a shift. 
-      Employee was made inactive, their current assignment was terminated and their pending shifts were removed."
+      retrieve_employee_assignments
+      # flash[:errors] = "Cannot delete employees who have worked a shift. 
+      # Employee was made inactive, their current assignment was terminated and their pending shifts were removed."
       render action: 'show'
     end
   end

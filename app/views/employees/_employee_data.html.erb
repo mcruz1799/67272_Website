@@ -3,13 +3,18 @@
     <h4><%= @employee.proper_name %></h4>
     <h5><%= @employee.role.capitalize %></h5><br />
 
-    <b>Current Assignment:&nbsp;&nbsp;</b><br>
-      <% if @employee.current_assignment.nil? %>
-        n/a<br /><br />
-      <% else %>
+      <% unless @employee.current_assignment.nil? %>
+        <b>Current Assignment:&nbsp;&nbsp;</b><br>
+
         <%= link_to @employee.current_assignment.store.name, store_path(@employee.current_assignment.store) %><br />
         since <%= @employee.current_assignment.start_date.strftime("%b %-d, %Y") %><br /><br />
 
+        <b>Current Pay Grade: </b>
+        <%= link_to @employee.current_pay_grade, pay_grade_path(@employee.current_assignment.pay_grade) %>
+        <br> <br>
+        <b>Current Pay Rate: </b>
+        <%= link_to "$#{@employee.current_pay_rate}", pay_grade_rate_path(@employee.current_assignment.pay_grade.pay_grade_rates.current.first) %>
+        <br><br>
       <% end %>
 
     <b>Phone:&nbsp;&nbsp;</b><br>
