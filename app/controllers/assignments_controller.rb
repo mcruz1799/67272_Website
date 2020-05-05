@@ -4,8 +4,18 @@ class AssignmentsController < ApplicationController
   authorize_resource
 
   def index
-    @current_assignments = Assignment.current.chronological.paginate(page: params[:page]).per_page(10)
-    @past_assignments = Assignment.past.chronological.paginate(page: params[:page]).per_page(10)
+    if current_user.role? :admin
+      @current_assignments = Assignment.current.chronological.paginate(page: params[:page]).per_page(10)
+      @past_assignments = Assignment.past.chronological.paginate(page: params[:page]).per_page(10)
+    elsif current_user.role? :manager
+      @current_assignments = Assignment.current.for_store(current_user.current_assignment).chronological.paginate(page: params[:page]).per_page(10)
+      @past_assignments = Assignment.past.for_store(current_user.current_assignment).chronological.paginate(page: params[:page]).per_page(10)
+    elsif current_user.role? :employee
+      @current_assignments = Assignment.current.for_employee(current_user).paginate(page: params[:page]).per_page(10)
+      @past_assignments    = Assignment.past.for_employee(current_user).chronological.paginate(page: params[:page]).per_page(10)
+    end
+    
+
   end
 
   def new

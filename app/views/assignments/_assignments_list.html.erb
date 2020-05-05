@@ -2,33 +2,35 @@
   <div class="card-content">
     <h5><%= state.capitalize %> Assignments</h5>
 
-    <% if assignments.empty? %>
+    <% if assignments.empty? || assignments.nil?%>
       <p>There are no <%= state.downcase %> assignments at this time.</p>
     <% else %>
 
       <table class="striped highlight">
         <thead>
-          <th>Employee Name</th>
+          <% unless current_user.role? :employee %><th>Employee Name</th><%end%>
           <th>Store Name</th>
           <th>Dates</th>
-          <th>Options</th>
+          <% if can? :manage, Assignment %><th>Options</th><%end%>
         </thead>
         <% assignments.each do |assignment| %>
           <tr %>
-            <td><%= link_to assignment.employee.name, employee_path(assignment.employee) %></td>
+            <% unless current_user.role? :employee %><td><%= link_to assignment.employee.name, employee_path(assignment.employee) %></td><% end %>
             <td><%= link_to assignment.store.name, store_path(assignment.store) %></td>
             <td><%= assignment.start_date.strftime("%-m/%-d/%y") %> - <%= assignment.end_date.nil? ? 'Present' : assignment.end_date.strftime("%-m/%-d/%y") %></td>
-            <td>
-              <% if state.downcase == 'current' %>
-                <%= link_to(terminate_assignment_path(assignment), method: :patch) do %>
-                  <i class="material-icons">stop</i>
+            <% if can? :manage, Assignment %>
+              <td>
+                <% if state.downcase == 'current' %>
+                  <%= link_to(terminate_assignment_path(assignment), method: :patch) do %>
+                    <i class="material-icons">stop</i>
+                  <% end %>
                 <% end %>
-              <% end %>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <%= link_to(assignment_path(assignment), method: :delete, data: { confirm: 'Are you sure you wish to delete this assignment?' }) do %>
-                  <i class="material-icons">delete</i>
-              <% end %>
-            </td>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <%= link_to(assignment_path(assignment), method: :delete, data: { confirm: 'Are you sure you wish to delete this assignment?' }) do %>
+                    <i class="material-icons">delete</i>
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </table>
