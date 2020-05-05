@@ -1,7 +1,10 @@
+
 <% if punch_in? || punch_out? %>
-
-  <% punch_in? ? text = "CLOCK IN" : text = "CLOCK OUT" %>
-    <%= link_to text, punch_clock_path, method: :patch %><br>
-    <%= text ==  "CLOCK IN" ? "Scheduled: #{@shift.start_time.strftime("%R")}" : "Scheduled: #{@shift.end_time.strftime("%R")}" %>
-
+  <div class="card">
+    <div class="card-content">
+      <% punch_in? ? text = "CLOCK IN" : text = "CLOCK OUT" %>
+        <%= link_to text, punch_clock_path, method: :patch %><br>
+        <%= text ==  "CLOCK IN" ? "Scheduled: #{@shift.start_time.strftime("%R")}" : "Scheduled: #{@shift.end_time.strftime("%R")}" %>
+    </div>
+  </div>
 <% end %>

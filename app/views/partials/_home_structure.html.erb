@@ -2,11 +2,8 @@
   <div class="col s8">
     
     <!-- primary partial gets displayed here in main div -->
-    <div class="card">
-        <div class="card-content">
-          <%= render partial: "#{primary}" %>
-        </div>
-    </div>
+    <%= render partial: "#{primary}" %>
+
 
     <!-- sometimes we want another partial below -->
     <% unless secondary.nil? %>
