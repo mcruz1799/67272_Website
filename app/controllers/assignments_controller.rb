@@ -3,9 +3,8 @@ class AssignmentsController < ApplicationController
   authorize_resource
 
   def index
-    # for phase 3 only
-      @current_assignments = Assignment.current.chronological.paginate(page: params[:page]).per_page(10)
-      @past_assignments = Assignment.past.chronological.paginate(page: params[:page]).per_page(10)
+    @current_assignments = Assignment.current.chronological.paginate(page: params[:page]).per_page(10)
+    @past_assignments = Assignment.past.chronological.paginate(page: params[:page]).per_page(10)
   end
 
   def new
