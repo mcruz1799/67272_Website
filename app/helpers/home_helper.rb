@@ -11,6 +11,6 @@ module HomeHelper
   end
 
   def working_today?(employee)
-    Shift.for_employee(employee).for_next_days(0).empty? == false
+    Shift.for_employee(employee).for_next_days(0).empty? == false ? "Yes" : "No"
   end
 end
