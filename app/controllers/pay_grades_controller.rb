@@ -1,5 +1,6 @@
 class PayGradesController < ApplicationController
   before_action :set_pay_grade, only: [:edit, :update]
+  before_action :check_login
   authorize_resource
 
   def new 

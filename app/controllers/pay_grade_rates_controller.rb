@@ -1,4 +1,6 @@
 class PayGradeRatesController < ApplicationController
+  before_action :check_login
+  authorize_resource
 
   def index 
     @pay_grades = PayGrade.alphabetical
