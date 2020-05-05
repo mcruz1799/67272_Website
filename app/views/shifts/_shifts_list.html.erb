@@ -10,10 +10,10 @@
       <table class="striped highlight">
         <thead>
           <th>View</th>
+          <th>Date</th>
           <th>Employee Name</th>
           <th>Store Name</th>
-          <th>Date</th>
-          <th>Times</th>
+          <th>Time</th>
           <% if can? :manage, Shift %>
             <th>Options</th>
           <% end %>
@@ -25,9 +25,9 @@
                   <i class="material-icons">pageview</i>
                 <% end %>
             </td>
+            <td><%= shift.date.strftime("%-m/%-d/%y") %></td>
             <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
             <td><%= link_to shift.store.name, store_path(shift.store) %></td>
-            <td><%= shift.date.strftime("%-m/%-d/%y") %></td>
             <td><%= "#{shift.start_time.strftime("%R")} - #{shift.end_time.strftime("%R")}" %></td>
             <% if can? :manage, Shift %>
               <td>
