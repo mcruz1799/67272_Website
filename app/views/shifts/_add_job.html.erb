@@ -5,10 +5,11 @@
       <%= simple_form_for(:shift_job, url: new_shift_job_path(shift_id: @shift.id), method: :post) do |f| %>
         <% if @shift.status == "finished" %>
           <%= f.input :job_id, collection: @job_array %>
+          <%= f.button :submit, "Add" %>
         <% else %>
           <%= f.input :job_id, disabled: true, hint: "Can only record jobs for finished shifts" %>
+          <%= f.button :submit, "Add", disabled: true %>
         <% end %>
-        <%= f.button :submit, "Add" %>
       <% end %>
 
   </div>

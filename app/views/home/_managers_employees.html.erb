@@ -10,7 +10,7 @@
     <tbody>
       <% @employees.each do |employee|%>
         <tr>
-          <td><%= employee.name %></td>
+          <td><%= link_to employee.name, employee_path(employee) %></td>
           <td><%= working_today?(employee) %></td>
           <td><%= link_to new_shift_path(assignment_id: employee.current_assignment.id) do %>
               <i class="material-icons">add</i>

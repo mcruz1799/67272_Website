@@ -13,6 +13,7 @@ class Ability
       can :manage, :all
     
     elsif user.role? :manager
+      can :search, Employee
       # can edit employees, list all employees and view their details (for employees at their stores)
       can :index, Employee
       can [:show,:edit,:update], Employee do |this_employee|
