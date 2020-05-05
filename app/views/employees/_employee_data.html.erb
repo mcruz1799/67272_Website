@@ -4,9 +4,9 @@
     <h5 class= "text-align center"><%= @employee.role.capitalize %></h5><br />
 
       <% unless @employee.current_assignment.nil? %>
-        <b>Current Assignment:&nbsp;&nbsp;</b><br>
+        <b>Current Assignment:&nbsp;&nbsp;</b>
 
-        <%= link_to @employee.current_assignment.store.name, store_path(@employee.current_assignment.store) %><br />
+        <%= link_to @employee.current_assignment.store.name, store_path(@employee.current_assignment.store) %>
         since <%= @employee.current_assignment.start_date.strftime("%b %-d, %Y") %><br /><br />
 
         <b>Current Pay Grade: </b>
