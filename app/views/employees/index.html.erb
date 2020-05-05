@@ -1,7 +1,6 @@
 <% if @total_employees != 0 %>
   <%= render partial: 'partials/title_with_search', locals: {title: 'Employees at AMC'} %>
 <% end %>
-<h4>Employees</h4>
 <%= render partial: 'partials/index_structure', locals: {model_name: 'employee', 
                                                          primary: 'active_lists', 
                                                          secondary: 'inactive_employees',

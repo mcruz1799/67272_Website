@@ -1,21 +1,23 @@
-<h5><%= "Your Employees at #{current_user.current_assignment.store.name}" %></h5>
-<table>
-  <thead>
-    <th>Name</th>
-    <th>Working Today?</th>
-    <th>Add Shift</th>
-  </thead>
+<% if current_user.current_assignment.nil? == false %>
+  <h5><%= "Your Employees at #{current_user.current_assignment.store.name}" %></h5>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Working Today?</th>
+      <th>Add Shift</th>
+    </thead>
 
-  <tbody>
-    <% @employees.each do |employee|%>
-      <tr>
-        <td><%= employee.name %></td>
-        <td><%= working_today?(employee) %></td>
-        <td><%= link_to new_shift_path(assignment_id: employee.current_assignment.id) do %>
-            <i class="material-icons">add</i>
-            <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @employees.each do |employee|%>
+        <tr>
+          <td><%= employee.name %></td>
+          <td><%= working_today?(employee) %></td>
+          <td><%= link_to new_shift_path(assignment_id: employee.current_assignment.id) do %>
+              <i class="material-icons">add</i>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
