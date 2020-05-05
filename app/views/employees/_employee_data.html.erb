@@ -13,7 +13,7 @@
         <%= link_to @employee.current_pay_grade, pay_grade_path(@employee.current_assignment.pay_grade) %>
         <br> <br>
         <b>Current Pay Rate: </b>
-        <%= link_to "$#{@employee.current_pay_rate}", pay_grade_rate_path(@employee.current_assignment.pay_grade.pay_grade_rates.current.first) %>
+        <%="$#{@employee.current_pay_rate}" %>
         <br><br>
       <% end %>
 
