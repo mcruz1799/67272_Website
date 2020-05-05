@@ -48,6 +48,15 @@ class ShiftsController < ApplicationController
     end
   end
 
+  def destroy
+    if @shift.destroy
+      redirect_to shifts_path, notice: "Successfully destroyed the shift."
+    else 
+      flash[:error] = "Can only destroy pending shifts."
+      redirect_back(fallback_location: home_path)
+    end
+  end
+
   def create_shift_job
     @shift_job = ShiftJob.new(shift_job_params)
     @shift = Shift.find(params[:shift_id])
