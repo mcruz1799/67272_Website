@@ -1,12 +1,21 @@
 <nav id="nav">
   <div class="container">
-    <ul class="left hide-on-med-and-down">
-      <li><%= link_to 'Stores', stores_path %></li>
-      <li><%= link_to 'Employees', employees_path %></li>
-      <li><%= link_to 'Assignments', assignments_path %></li>
-    </ul>
+    <% if logged_in? %>
+      <ul class="left hide-on-med-and-down">
+        <% if can? :index, Store %><li><%= link_to 'Stores', stores_path %></li><% end %>
+        <% if can? :index, Employee %><li><%= link_to 'Employees', employees_path %></li><%end%>
+        <% if can? :index, Assignment %><li><%= link_to 'Assignments', assignments_path %></li><%end%>
+        <% if can? :index, Shift %><li><%= link_to 'Shifts', shifts_path %></li><%end%>
+        <% if can? :index, PayGrade %><li><%= link_to 'Pay Grades', pay_grades_path %></li><%end%>
+        <% if can? :index, PayGradeRate %><li><%= link_to 'Pay Grade Rates', pay_grade_rates_path %></li><%end%>
+      </ul>
+    <% end %>
     <ul class="right">
-      <li></li>
+      <% if logged_in? %>
+        <li><%= link_to 'Log Out', logout_path %></li>
+      <% else %>
+        <li><%= link_to 'Log In', login_path %></li>
+      <% end %>
     </ul>
   </div>
 </nav>

@@ -46,7 +46,7 @@ class Ability
         my_shifts.include? this_shift.id
       end
       #can index assignments and show their assignments
-      can :index, Assignment
+      can :index, Assignment, :employee_id => user.id
       can :show, Assignment do |this_assignment|
         my_assignments = Assignment.for_employee(user).map(&:id)
         my_assignments.include? this_assignment.id
