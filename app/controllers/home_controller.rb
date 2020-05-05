@@ -1,9 +1,15 @@
 class HomeController < ApplicationController
   def index
     @stores = Store.all.alphabetical
-    if logged_in? && (current_user.role? :employee)
-      setup_latest_pay_report
-      setup_latest_shifts
+    if logged_in?
+      if current_user.role? :employee
+        setup_latest_pay_report
+        setup_latest_shifts
+      elsif current_user.role? :manager
+        get_managers_store
+        get_managers_employees
+
+      end
 
     end
     # @store_array = store.map{|store| [store.name, store.id] }
@@ -34,6 +40,14 @@ class HomeController < ApplicationController
 
   def date_range_params 
     params.require(:date_range).permit(:start_date, :end_date)
+  end
+
+  def get_managers_employees
+    @employees = Assignment.current.for_store(@store).map{|a|a.employee}.sort_by{|e|e.name} unless @store.nil?
+  end
+
+  def get_managers_store 
+    @store = current_user.current_assignment.store unless current_user.current_assignment.nil?
   end
 
   def setup_latest_shifts

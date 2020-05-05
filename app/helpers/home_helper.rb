@@ -9,4 +9,8 @@ module HomeHelper
     employee = current_user
     Shift.started.for_employee(employee).for_next_days(0).first.nil? ? false : true
   end
+
+  def working_today?(employee)
+    Shift.for_employee(employee).for_next_days(0).empty? == false
+  end
 end
