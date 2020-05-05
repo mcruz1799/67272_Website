@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-content">
-    <h5><%= "Your " if current_user.role? :employee %><%= state.capitalize %> Assignments <%= "at #{@store.name}" unless @store.nil? %></h5>
+    <h4 class= "text-align center"><%= "Your " if current_user.role? :employee %><%= state.capitalize %> Assignments <%= "at #{@store.name}" unless @store.nil? %></h4>
 
     <% if assignments.empty? || assignments.nil?%>
       <p>There are no <%= state.downcase %> assignments at this time.</p>

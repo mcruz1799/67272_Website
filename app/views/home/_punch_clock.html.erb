@@ -2,9 +2,20 @@
 <% if punch_in? || punch_out? %>
   <div class="card">
     <div class="card-content">
-      <% punch_in? ? text = "CLOCK IN" : text = "CLOCK OUT" %>
-        <%= link_to text, punch_clock_path, method: :patch %><br>
-        <%= text ==  "CLOCK IN" ? "Scheduled: #{@shift.start_time.strftime("%R")}" : "Scheduled: #{@shift.end_time.strftime("%R")}" %>
+      <div class="row">
+        <div class="col s8">
+          <% punch_in? ? text = "Clock In ->" : text = "Clock Out ->" %>
+          <h4 class= "text-align center"><%= text %></h4><br>
+        </div>
+        <div class="col s4">
+          <%= link_to punch_clock_path, method: :patch do %>
+          <i class="large material-icons">access_time</i>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <h5 class= "text-align center"><%= text ==  "CLOCK IN" ? "Scheduled: #{@shift.start_time.strftime("%R")}" : "Scheduled: #{@shift.end_time.strftime("%R")}" %></h5>
+      </div>
     </div>
   </div>
 <% end %>
