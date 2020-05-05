@@ -9,6 +9,7 @@
 
       <table class="striped highlight">
         <thead>
+          <th>View</th>
           <th>Employee Name</th>
           <th>Store Name</th>
           <th>Date</th>
@@ -19,6 +20,11 @@
         </thead>
         <% shifts.each do |shift| %>
           <tr>
+            <td>
+                <%= link_to(shift_path(shift)) do %>
+                  <i class="material-icons">pageview</i>
+                <% end %>
+            </td>
             <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
             <td><%= link_to shift.store.name, store_path(shift.store) %></td>
             <td><%= shift.date.strftime("%-m/%-d/%y") %></td>
@@ -28,9 +34,11 @@
                 <%= link_to(edit_shift_path(shift)) do %>
                   <i class="material-icons">edit</i>
                 <% end %>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this shift?' }) do %>
-                    <i class="material-icons">delete</i>
+                <% if shift.status == "pending" %>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this shift?' }) do %>
+                      <i class="material-icons">delete</i>
+                  <% end %>
                 <% end %>
               </td>
             <% end %>
