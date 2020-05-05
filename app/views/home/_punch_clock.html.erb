@@ -14,7 +14,12 @@
         </div>
       </div>
       <div class="row">
-        <h5 class= "text-align center"><%= text ==  "CLOCK IN" ? "Scheduled: #{@shift.start_time.strftime("%R")}" : "Scheduled: #{@shift.end_time.strftime("%R")}" %></h5>
+        <div class="col s8">
+          <h5 class="text-align center">Scheduled:</h5>
+        </div>
+        <div class="col s4">
+          <h5><%= text ==  "CLOCK IN" ? "#{@shift.start_time.strftime("%R")}" : "#{@shift.end_time.strftime("%R")}" %></h5>
+        </div>
       </div>
     </div>
   </div>

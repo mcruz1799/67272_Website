@@ -1,4 +1,4 @@
-<h5 class= "text-align center">Shift Schedule</h5>
+<h4 class= "text-align center">Shift Schedule</h4>
 <%= week_calendar number_of_weeks: 2 do |date| %>
   <%= date.strftime("%-m/%-d") %><br>
   <% shifts = get_shifts_for_date(date) %>
