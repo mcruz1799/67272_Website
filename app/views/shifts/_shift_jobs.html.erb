@@ -8,14 +8,19 @@
           <thead>
             <th>Job</th>
             <th>Description</th>
+            <th>Options</th>
           </thead>
 
           <tbody>
-            <% @shift.jobs.alphabetical.each do |job| %>
+            <% @shift_jobs.each do |sj| %>
               <tr>
                 <!-- TO DO: MAKE LINK TO JOB SHOW PAGE -->
-                <td><%= job.name %></td>
-                <td><%= job.description %></td>
+                <td><%= sj.job.name %></td>
+                <td><%= sj.job.description %></td>
+                <td><%= link_to(destroy_shift_job_path(id: sj.id), method: :patch) do %>
+                      <i class="material-icons">delete</i>
+                    <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>

@@ -11,8 +11,13 @@ class ShiftsController < ApplicationController
   def show 
     @employee = @shift.assignment.employee
     @store = @shift.assignment.store
+
+    #add job form
     @shift_job = ShiftJob.new
     @job_array = Job.active.alphabetical.map{|job| [job.name, job.id]}
+
+    #recorded jobs 
+    @shift_jobs = @shift.shift_jobs.sort_by{|sj| sj.job.name}
   end
 
   def new 
@@ -51,6 +56,12 @@ class ShiftsController < ApplicationController
     else
       redirect_back(fallback_location: home_path) #, notice: "Job was not added to shift, please try again."
     end
+  end
+
+  def destroy_shift_job
+    @shift_job = ShiftJob.find(params[:id])
+    @shift_job.destroy
+    redirect_back(fallback_location: home_path)
   end
 
   private 

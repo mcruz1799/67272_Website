@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'payroll/store_report', to: 'payroll#store_report', as: :store_report
   get 'schedule', to: 'schedules#schedule', as: :schedule
   post 'new_shift_job', to: 'shifts#create_shift_job', as: :new_shift_job
+  patch 'destroy_shift_job/:id', to: 'shifts#destroy_shift_job', as: :destroy_shift_job
 
   # You can have the root of your site routed with 'root'
   root 'home#index'
