@@ -10,10 +10,6 @@ class PayrollController < ApplicationController
     @payrolls = @calc.create_payrolls_for(@store)
   end
 
-  def employee_report
-    
-  end
-
   private 
 
   #TO DO: WHITELIST
