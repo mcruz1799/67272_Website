@@ -20,20 +20,20 @@
   <% if controller.respond_to?(:destroy) %>
     <% if can? :destroy, object %>
 
-      <% if (object.is_a? Shift) && (object.status == "pending") %>
+      <% if (object.is_a? Shift) && (object.status == "pending") # if its a pending shift%>
         <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'waves-effect waves-light btn btn-alert') do %>
             &nbsp;<%= "Delete #{opt}" %>
         <% end %>
 
-      <% elsif (object.is_a? Employee) && (object.current_assignment.nil? == false) %>
-        
+      <% elsif object.is_a? Employee %>
+
         <% if object.shifts.finished.empty? && object.shifts.started.empty? %>
 
           <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'waves-effect waves-light btn btn-alert') do %>
           &nbsp;<%= "Delete" %>
           <% end %>
 
-        <% else %>
+        <% elsif object.active %>
 
           <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to make #{opt} inactive"}, class: 'waves-effect waves-light btn btn-alert') do %>
           &nbsp;<%= "Make Inactive" %>
