@@ -5,6 +5,7 @@
     <b>Store: </b><%= link_to @store.name, @store %><br><br>
     <b>Date: </b><%= @shift.date.strftime("%D") %><br><br>
     <b>Times: </b><%= "#{@shift.start_time.strftime("%R")} to #{@shift.end_time.strftime("%R")}" %><br><br>
+    <b>Status: </b><%= @shift.status.capitalize %><br><br>
     <% unless @shift.notes.nil? %>
       <b>Notes: </b><%= @shift.notes %>
     <% end %>
