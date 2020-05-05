@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   resources :stores
   resources :assignments
   resources :shifts
-  resources :pay_grades #TO DO: TAKE OUT UNNECESSARY ROUTES
-  resources :pay_grade_rates #TO DO: SAME AS ABOVE
-  resources :jobs #TO DO: SAME AS ABOVE
+  resources :pay_grades, except: [:show, :destroy]
+  resources :pay_grade_rates, only: [:new, :create, :index] 
+  resources :jobs
   resources :sessions, only: [:new, :create, :destroy]
 
   # Custom routes
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   patch 'assignments/:id/terminate', to: 'assignments#terminate', as: :terminate_assignment
   patch 'home/punch_clock', to: 'home#punch_clock', as: :punch_clock
   get 'payroll/store_report', to: 'payroll#store_report', as: :store_report
-  get 'schedule', to: 'schedules#schedule', as: :schedule
+  # get 'schedule', to: 'schedules#schedule', as: :schedule
   post 'new_shift_job', to: 'shifts#create_shift_job', as: :new_shift_job
   patch 'destroy_shift_job/:id', to: 'shifts#destroy_shift_job', as: :destroy_shift_job
 
