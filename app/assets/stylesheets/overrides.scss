@@ -1,32 +1,41 @@
 html {
   // Preloaded with three fonts; uncomment the one you prefer
   // font-family: 'Alfa Slab One', cursive;
-  font-family: 'Nunito', sans-serif;
-  // font-family: 'Bitter', serif;
+  // font-family: 'Nunito', sans-serif;
+  font-family: 'Bitter', serif;
   // font-family: 'Josefin Sans', sans-serif;
+}
+
+/********** LINKS ********/ 
+main a{
+  color: #2F2FA2;
+}
+
+main a:hover{
+  color: rgb(119, 119, 255);
 }
 
 /********** TOPBAR & NAV ********/
 #topbar {
-  background-color: #00274C;
+  background-color: #242582;
   padding-top: 5px;
   margin-bottom: 0px;
-  color: #FFCB05;
-  font-family: 'Alfa Slab One', cursive;
+  color: #F64C72;
+  font-family: 'Bitter', serif;
 }
 
 #topbar a {
-  color: #FFCB05;
+  color: #F64C72;
 }
 
 #nav {
-  background-color: #00274C;
+  background-color: #242582;
   height: 50px;
-  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Bitter', serif;
 }
 
 #nav ul a {
-  color: #FFCB05;
+  color: #F64C72;
   font-size: 1.2rem;
 }
 
@@ -51,17 +60,17 @@ html {
 /********** FOOTER ********/
 
 #footer {
-  background-color: #00274C;
+  background-color: #242582;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 0px;
-  color: yellow;
+  color: #99738E;
   line-height: 2rem;
-  font-family: 'Alfa Slab One', cursive;
+  font-family: 'Bitter', serif;
 }
 
 #footer a {
-  color: #FFCB05;
+  color: #F64C72;
 }
 
 /********** TABLES ********/
@@ -70,11 +79,12 @@ table.striped > tbody > tr:nth-child(odd) {
 }
 
 table.striped > tbody > tr:nth-child(even) {
-  background-color: #fffde7;
+  background-color: rgb(255, 234, 249);
+
 }
 
 table.highlight > tbody > tr:hover {
-  background-color: #fff59d;
+  background-color: rgb(235, 204, 226);
 }
 
 td.align_right {
@@ -95,12 +105,12 @@ th.align_center {
 
 /********** BUTTONS ********/
 .btn {
-  background-color: #FFCB05;
+  background-color: #F64C72;
   color: #000;
 }
 
 .btn:hover {
-  background-color: #ffff00;
+  background-color: #99738E;
   color: #000;
 }
 
@@ -125,15 +135,15 @@ th.align_center {
 
 /********** FORMS ********/
 .switch label input[type=checkbox]:checked + .lever {
-  background-color: #ffea00;
+  background-color: #553D67;
 }
 
 .switch label input[type=checkbox]:checked + .lever::after {
-  background-color: #FFCB05;
+  background-color: #F64C72;
 }
 
 .picker__date-display {
-  background-color: #FFCB05;
+  background-color: #F64C72;
   color: #000;
 }
 
@@ -149,22 +159,22 @@ input[type=text].search {
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
   border-radius: 50%;
   transform: scale(0.9);
-  background-color: #FFCB05;
+  background-color: #F64C72;
   color: #000;
 }
 
 .check_boxes.optional.filled-in {
-  background-color: #FFCB05;
+  background-color: #F64C72;
 }
 
 [type="checkbox"].filled-in:checked+label:after {
-  border: 2px solid #FFCB05;
-  background-color: #FFCB05;
+  border: 2px solid #F64C72;
+  background-color: #F64C72;
 }
 
 [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
-  border: 2px solid #FFCB05;
-  background-color: #FFCB05;
+  border: 2px solid #F64C72;
+  background-color: #F64C72;
 }
 
 #form-template {
@@ -189,7 +199,7 @@ input[type=text].search {
 
 /********** CARDS ********/
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #ffab00;
+  color: #553D67;
 }
 
 .remove {
@@ -206,7 +216,7 @@ li.no_bullet {
 }
 
 .tabs .tab a:hover {
-  color: #FFCB05;
+  color: #F64C72;
 }
 
 .tabs .tab a {
@@ -217,7 +227,7 @@ li.no_bullet {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #FFCB05;
+  background-color: #F64C72;
   will-change: left, right;
 }
 
