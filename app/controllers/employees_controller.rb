@@ -21,6 +21,7 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+    @employee.role = "employee" if (current_user.role? :manager) || (current_user.role? :employee)
   end
 
   def create

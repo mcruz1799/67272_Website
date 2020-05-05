@@ -2,5 +2,9 @@
 <%= f.input :last_name, label_html: { class: 'active' } %>
 <%= f.input :date_of_birth, label_html: { class: 'active' } %>
 <%= f.input :phone, label_html: { class: 'active' } %>
-<%= f.input :role, collection: Employee::ROLES_LIST, include_blank: true %>
+<% if current_user.role? :admin %>
+  <%= f.input :role, collection: Employee::ROLES_LIST, include_blank: true %>
+<% else %>
+  <%= f.input :role, disabled: true, hint: 'You are not authorized to change roles' %>
+<% end %>
 <%= f.input :active %>

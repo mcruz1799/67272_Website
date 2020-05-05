@@ -2,11 +2,13 @@
   <div class="container">
     <% if logged_in? %>
       <ul class="left hide-on-med-and-down">
-        <% if can? :index, Store %><li><%= link_to 'Stores', stores_path %></li><% end %>
-        <% if can? :index, Employee %><li><%= link_to 'Employees', employees_path %></li><%end%>
-        <% if can? :index, Assignment %><li><%= link_to 'Assignments', assignments_path %></li><%end%>
-        <% if can? :index, Shift %><li><%= link_to 'Shifts', shifts_path %></li><%end%>
-        <% if can? :index, PayGrade %><li><%= link_to 'Pay Grades', pay_grades_path %></li><%end%>
+        
+        <% if can? :show, current_user %> <li><%= link_to 'My Info', employee_path(current_user) %></li><%end%>
+        <% if can? :index, Store %>       <li><%= link_to 'Stores', stores_path %></li><% end %>
+        <% if can? :index, Employee %>    <li><%= link_to 'Employees', employees_path %></li><%end%>
+        <% if can? :index, Assignment %>  <li><%= link_to 'Assignments', assignments_path %></li><%end%>
+        <% if can? :index, Shift %>       <li><%= link_to 'Shifts', shifts_path %></li><%end%>
+        <% if can? :index, PayGrade %>    <li><%= link_to 'Pay Grades', pay_grades_path %></li><%end%>
         <% if can? :index, PayGradeRate %><li><%= link_to 'Pay Grade Rates', pay_grade_rates_path %></li><%end%>
       </ul>
     <% end %>
