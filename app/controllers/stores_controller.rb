@@ -12,8 +12,9 @@ class StoresController < ApplicationController
   end
 
   def show
-    @current_managers = @store.assignments.current.map{|a| a.employee}.sort_by{|e| e.name}.select{|e| e.role == 'manager'}
-    @current_employees = @store.assignments.current.map{|a| a.employee}.sort_by{|e| e.name}
+    @current_managers   = @store.assignments.current.map{|a| a.employee}.sort_by{|e| e.name}.select{|e| e.role == 'manager'}
+    @current_employees  = @store.assignments.current.map{|a| a.employee}.sort_by{|e| e.name}
+    @shifts             = @store.shifts.chronological
   end
 
   def new
