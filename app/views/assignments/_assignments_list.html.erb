@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-content">
-    <h5><%= state.capitalize %> Assignments</h5>
+    <h5><%= "Your " if current_user.role? :employee %><%= state.capitalize %> Assignments <%= "at #{@store.name}" unless @store.nil? %></h5>
 
     <% if assignments.empty? || assignments.nil?%>
       <p>There are no <%= state.downcase %> assignments at this time.</p>
@@ -9,14 +9,14 @@
       <table class="striped highlight">
         <thead>
           <% unless current_user.role? :employee %><th>Employee Name</th><%end%>
-          <th>Store Name</th>
+          <% unless current_user.role? :manager %><th>Store Name</th><%end%>
           <th>Dates</th>
           <% if can? :manage, Assignment %><th>Options</th><%end%>
         </thead>
         <% assignments.each do |assignment| %>
           <tr %>
             <% unless current_user.role? :employee %><td><%= link_to assignment.employee.name, employee_path(assignment.employee) %></td><% end %>
-            <td><%= link_to assignment.store.name, store_path(assignment.store) %></td>
+            <% unless current_user.role? :manager %><td><%= link_to assignment.store.name, store_path(assignment.store) %></td><%end%>
             <td><%= assignment.start_date.strftime("%-m/%-d/%y") %> - <%= assignment.end_date.nil? ? 'Present' : assignment.end_date.strftime("%-m/%-d/%y") %></td>
             <% if can? :manage, Assignment %>
               <td>

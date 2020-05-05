@@ -10,6 +10,7 @@ class AssignmentsController < ApplicationController
     elsif current_user.role? :manager
       @current_assignments = Assignment.current.for_store(current_user.current_assignment).chronological.paginate(page: params[:page]).per_page(10)
       @past_assignments = Assignment.past.for_store(current_user.current_assignment).chronological.paginate(page: params[:page]).per_page(10)
+      @store = current_user.current_assignment.store
     elsif current_user.role? :employee
       @current_assignments = Assignment.current.for_employee(current_user).paginate(page: params[:page]).per_page(10)
       @past_assignments    = Assignment.past.for_employee(current_user).chronological.paginate(page: params[:page]).per_page(10)
