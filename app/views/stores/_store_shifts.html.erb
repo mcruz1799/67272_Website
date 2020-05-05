@@ -2,7 +2,7 @@
 <%= week_calendar do |date| %>
   <%= date.strftime("%-m/%-d") %><br>
   <% shifts = get_shifts_for_date(date) %>
-  <table>
+  <table class="striped highlight">
     <% shifts.each do |shift| %>
       <tr>
         <td><%= shift.employee.first_name%><br><%= link_to "#{shift.start_time.strftime("%R")} - #{shift.end_time.strftime("%R")}", shift_path(shift) %></td>

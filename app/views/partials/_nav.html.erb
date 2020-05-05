@@ -3,7 +3,6 @@
     <% if logged_in? %>
       <ul class="left hide-on-med-and-down">
         
-        <% if can? :show, current_user %> <li><%= link_to 'My Info', employee_path(current_user) %></li><%end%>
         <% if can? :index, Store %>       <li><%= link_to 'Stores', stores_path %></li><% end %>
         <% if can? :index, Employee %>    <li><%= link_to 'Employees', employees_path %></li><%end%>
         <% if can? :index, Assignment %>  <li><%= link_to 'Assignments', assignments_path %></li><%end%>
@@ -13,6 +12,7 @@
       </ul>
     <% end %>
     <ul class="right">
+      <% if can? :show, current_user %> <li><%= link_to 'My Info', employee_path(current_user) %></li><%end%>
       <% if logged_in? %>
         <li><%= link_to 'Log Out', logout_path %></li>
       <% else %>
