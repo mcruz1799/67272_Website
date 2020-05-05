@@ -14,7 +14,7 @@
         <% @payrolls.each do |payroll| %>
           <tr>
             <td><%= link_to payroll.employee_name, employee_path(payroll.employee) %></td>
-            <td><%= "$#{payroll.pay_earned}" %></td>
+            <td><%= "$#{sprintf('%.2f', payroll.pay_earned.ceil(2))}" %></td>
             <td><%= payroll.pay_grade %></td>
             <td><%= "$#{payroll.pay_rate}" %></td>
           </tr>
