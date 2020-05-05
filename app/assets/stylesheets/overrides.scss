@@ -25,6 +25,10 @@ h4 {
   color: #F64C72;
 }
 
+/******* BACKGROUND *******/
+main {
+  background-color: rgb(255, 241, 244);
+}
 /********** TOPBAR & NAV ********/
 #topbar {
   background-color: #242582;
@@ -111,6 +115,11 @@ th.align_right {
 
 th.align_center {
   text-align: center;
+}
+
+th{
+  font-size: large;
+  font-weight: bolder;
 }
 
 /********** BUTTONS ********/

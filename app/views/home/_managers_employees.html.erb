@@ -1,5 +1,5 @@
 <% if current_user.current_assignment.nil? == false %>
-  <h5 class= "text-align center">Your Employees at <%= link_to current_user.current_assignment.store.name, store_path(current_user.current_assignment.store) %></h5>
+  <h4 class= "text-align center">Your Employees at <%= link_to current_user.current_assignment.store.name, store_path(current_user.current_assignment.store) %></h4>
   <table class="striped highlight">
     <thead>
       <th>Name</th>
